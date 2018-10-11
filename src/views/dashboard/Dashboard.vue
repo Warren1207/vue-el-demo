@@ -1,5 +1,5 @@
 <template>
-    <div>{{ $t("home.dashboard") }}</div>
+    <div></div>
 </template>
 <script>
 export default {
