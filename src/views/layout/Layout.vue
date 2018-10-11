@@ -6,6 +6,6 @@ export default {
 
 }
 </script>
-<style lang="sass" scoped>
+<style rel="stylesheet/scss" lang="sass" scoped>
 
 </style>
