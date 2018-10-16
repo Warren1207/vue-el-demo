@@ -1,9 +1,9 @@
 <template>
-    <div>登录</div>
+    <div>Empty</div>
 </template>
 <script>
 export default {
-  name: 'Login'
+  name: 'Empty'
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
