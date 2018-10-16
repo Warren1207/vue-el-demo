@@ -3,9 +3,9 @@
 </template>
 <script>
 export default {
-
+  name: 'Dashboard'
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
 </style>

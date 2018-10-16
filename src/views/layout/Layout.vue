@@ -1,11 +1,48 @@
 <template>
-    <div></div>
+    <div class="layout-wrapper">
+        <el-container>
+          <el-header class="padder-no">
+            <navbar/>
+          </el-header>
+          <el-container>
+            <el-aside width="200px">
+              <sidebar/>
+            </el-aside>
+            <el-container>
+              <el-main class="padder-no">
+                <tagbar/>
+                <app-container/>
+              </el-main>
+              <el-footer class="padder-no" style="height:50px;">
+                <footerbar/>
+              </el-footer>
+            </el-container>
+          </el-container>
+        </el-container>
+    </div>
 </template>
 <script>
+import { Navbar, Sidebar, Tagbar, AppContainer, Footerbar } from './components'
 export default {
-
+  name: 'Layout',
+  components: {
+    Navbar,
+    Sidebar,
+    Tagbar,
+    AppContainer,
+    Footerbar
+  }
 }
 </script>
-<style rel="stylesheet/scss" lang="sass" scoped>
-
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .layout-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      background: #f5f7f9;
+  }
+  .padder-no{
+    padding: 0;
+  }
 </style>

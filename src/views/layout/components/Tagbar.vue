@@ -1,9 +1,9 @@
 <template>
-    <div></div>
+    <div>Tagbar</div>
 </template>
 <script>
 export default {
-  name: 'Login'
+  name: 'Tagbar'
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>

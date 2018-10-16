@@ -1,9 +1,9 @@
 <template>
-    <div></div>
+    <div>AppContainer</div>
 </template>
 <script>
 export default {
-  name: 'Login'
+  name: 'AppContainer'
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
