@@ -8,8 +8,8 @@
             <el-aside width="200px">
               <sidebar/>
             </el-aside>
-            <el-container>
-              <el-main class="padder-no">
+            <el-container style="border-top: 1px solid #d8dce5;">
+              <el-main class="padder-no flex-main-wrapper">
                 <tagbar/>
                 <app-container/>
               </el-main>
@@ -44,5 +44,9 @@ export default {
   }
   .padder-no{
     padding: 0;
+  }
+  .flex-main-wrapper{
+    display: flex;
+    flex-direction: column;
   }
 </style>
