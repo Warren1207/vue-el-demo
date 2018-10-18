@@ -1,12 +1,14 @@
 <template>
     <div class="nav-wrapper">
-        <div class="app-logo"></div>
-        <hamburger :toggle-click="toggleSideBar" :is-active="true" class="hamburger-container"/>
+        <div :class="{ 'app-logo': sideBarOpen, 'app-logo-collapse': !sideBarOpen }"></div>
+        <hamburger :toggle-click="toggleSideBar" :is-active="sideBarOpen" class="hamburger-container"/>
         <el-breadcrumb separator="/" class="app-breadcrumb">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item><a href="/">导航一</a></el-breadcrumb-item>
-            <el-breadcrumb-item>分组一</el-breadcrumb-item>
-            <el-breadcrumb-item>选项一</el-breadcrumb-item>
+            <transition-group name="breadcrumb">
+              <el-breadcrumb-item v-for="(item,index) in levelList" v-if="item.meta.title" :key="item.path">
+                <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
+                <router-link v-else :to="item.redirect||item.path">{{ item.meta.title }}</router-link>
+              </el-breadcrumb-item>
+            </transition-group>
         </el-breadcrumb>
         <div class="right-menu">
           <el-dropdown trigger="click">
@@ -29,14 +31,37 @@
 </template>
 <script>
 import Hamburger from './Hamburger'
+
 export default {
   name: 'Navbar',
   components: {
     Hamburger
   },
+  data () {
+    return {
+      levelList: null
+    }
+  },
+  computed: {
+    sideBarOpen () {
+      return this.$store.state.sideBarOpen
+    }
+  },
+  watch: {
+    $route () {
+      this.getBreadcrumb()
+    }
+  },
+  created () {
+    this.getBreadcrumb()
+  },
   methods: {
     toggleSideBar () {
-
+      this.$store.state.sideBarOpen = !this.$store.state.sideBarOpen
+    },
+    getBreadcrumb () {
+      const matched = this.$route.matched
+      this.levelList = matched
     }
   }
 }
@@ -47,6 +72,12 @@ export default {
         background: #FFF;
         .app-logo{
            width: 200px;
+           background-color: #545c64;
+           height: 100%;
+           float: left;
+        }
+        .app-logo-collapse {
+           width: 70px;
            background-color: #545c64;
            height: 100%;
            float: left;

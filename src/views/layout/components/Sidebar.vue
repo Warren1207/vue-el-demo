@@ -1,16 +1,16 @@
 <template>
     <div class="side-wrapper">
       <el-menu
-        default-active="2"
+        :collapse="isCollapse"
+        default-active="1"
         :router="true"
-        class="el-menu-vertical-demo"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>导航一</span>
+              <span>我的导航</span>
             </template>
             <el-menu-item-group>
               <template slot="title">分组一</template>
@@ -42,7 +42,12 @@
 </template>
 <script>
 export default {
-  name: 'Sidebar'
+  name: 'Sidebar',
+  computed: {
+    isCollapse () {
+      return !this.$store.state.sideBarOpen
+    }
+  }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -53,4 +58,5 @@ export default {
   .el-menu{
     border-right: 0px;
   }
+
 </style>

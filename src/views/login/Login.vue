@@ -39,7 +39,12 @@ export default {
     loginFn () {
       this.$refs['loginFrom'].validate((valid) => {
         if (valid) {
-          this.$message('Login')
+          this.$store.dispatch('LoginFun', this.loginFromData).then(() => {
+            this.loading = false
+            this.$router.push({ path: this.redirect || '/' })
+          }).catch(() => {
+            this.loading = false
+          })
         } else {
           this.$message({
             message: '请输入用户名及密码',

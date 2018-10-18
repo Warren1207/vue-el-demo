@@ -4,6 +4,9 @@ import tagsView from './module/tagsView'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    sideBarOpen: true
+  },
   modules: {
     tagsView
   },

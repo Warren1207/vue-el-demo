@@ -5,7 +5,7 @@
             <navbar/>
           </el-header>
           <el-container>
-            <el-aside width="200px">
+            <el-aside :width="asideWidth">
               <sidebar/>
             </el-aside>
             <el-container style="border-top: 1px solid #d8dce5;">
@@ -31,6 +31,11 @@ export default {
     Tagbar,
     AppContainer,
     Footerbar
+  },
+  computed: {
+    asideWidth () {
+      return this.$store.state.sideBarOpen ? '200px' : '70px'
+    }
   }
 }
 </script>

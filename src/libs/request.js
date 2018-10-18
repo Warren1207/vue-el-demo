@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/libs/auth'
+import { getToken, removeToken } from '@/libs/auth'
 import config from '@/config'
+import router from '../router'
 
 const BASE_API = process.env.NODE_ENV === 'development' ? config.BASE_API.dev : config.BASE_API.prod
 /**
@@ -37,6 +38,12 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => response,
   error => {
+    if (error.response.status === 403) {
+      removeToken()
+      router.push({
+        name: 'login'
+      })
+    }
     console.log('err' + error) // for debug
     Message({
       message: error.message,
